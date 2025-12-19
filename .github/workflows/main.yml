@@ -42,5 +42,8 @@ jobs:
       with:
         report_paths: '**/reports/**/*.xml'
     - name: Commit
-      run: git commit -s -m "Run pipeline with version number ${{inputs.version}}"
+      run: |
+        git config --global user.email "bori.varga@tngtech.com"
+        git config --global user.name "Bori Varga"
+        git commit -s -m "Run pipeline with version number ${{inputs.version}}"
     
