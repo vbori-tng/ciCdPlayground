@@ -11,15 +11,15 @@ pipeline {
             }
         }
 
-        stage('build') {
-            steps {
-                sh 'yarn build'
-            }
-        }
-
         stage('unit test') {
             steps {
                 sh 'yarn test'
+            }
+        }
+
+        stage('build') {
+            steps {
+                sh 'yarn build'
             }
         }
 
