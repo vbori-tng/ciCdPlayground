@@ -5,6 +5,7 @@ pipeline {
     }
 
     stages {
+        
         stage('install') {
             steps {
                 sh 'yarn'
@@ -26,6 +27,12 @@ pipeline {
         stage('integration test') {
             steps {
                 sh 'yarn test:e2e'
+            }
+
+            post {
+                always {
+                    junit '**/reports/**/*.xml'
+                }
             }
         }
 
@@ -56,9 +63,4 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            junit '**/reports/**/*.xml'
-        }
-    }
 }
